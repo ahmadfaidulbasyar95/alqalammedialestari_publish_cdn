@@ -11,8 +11,9 @@
 							'<a href="'+url+'" target="_BLANK" class="btn btn-info btn-md" style="margin-left: 5px;"><i class="fa fa-calendar-check-o fa-fw"></i> SK Terbit</a>'+
 						'</div>';
 					$(html).insertAfter(post_labels);
+					var post_body = $('.post-body');
 					$('.post-doc_info a').on('click', function() {
-						copyTextToClipboard($('.post-body').text());
+						copyTextToClipboard(post_body.attr('id').replace('post-body-','') + '|##|' + post_body.text());
 					})
 				}
 			});
