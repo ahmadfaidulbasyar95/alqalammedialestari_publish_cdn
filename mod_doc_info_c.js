@@ -45,7 +45,7 @@
 	parent.insertBefore(wrapper, postLabels.nextSibling);
 
 	var postId = postBody.id.replace('post-body-', '');
-	var postText = postBody.innerText;
+	var postText = postBody.textContent;
 	var copyData = postId + '|##|' + postText;
 
 	var buttons = wrapper.getElementsByTagName('a');
