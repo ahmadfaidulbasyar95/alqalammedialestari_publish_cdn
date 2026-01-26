@@ -1,7 +1,7 @@
 <?php 
 $FILES = [
 	'mod/doc/info_c.js',
-	'mod/doc/load_.js',
+	'mod/doc/load_a.js',
 	'mod/doc/modern-screenshot.min.js',
 	'mod/doc/qrcode.min.js',
 ];
