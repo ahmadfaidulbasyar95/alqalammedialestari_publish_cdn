@@ -27,7 +27,6 @@
 		'?url=' +
 		encodeURIComponent(pageUrl);
 
-	// 4. Buat wrapper SEKALI
 	var wrapper = document.createElement('div');
 	wrapper.className = 'text-center post-doc_info';
 	wrapper.style.margin = '30px 0';
@@ -54,5 +53,7 @@
 			copyTextToClipboard(copyData);
 		};
 	}
+
+	postBody.querySelector('.separator').classList.add('img-book');
 
 })();
