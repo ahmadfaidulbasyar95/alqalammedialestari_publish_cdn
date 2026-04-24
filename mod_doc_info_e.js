@@ -56,4 +56,32 @@
 
 	postBody.querySelector('.separator').classList.add('img-book');
 
+	var postBodyP = postBody.querySelectorAll('p');
+	var shoppingBtn = null;
+
+	for (var i = 0; i < postBodyP.length; i++) {
+		if (postBodyP[i].textContent.includes('QRCBN') || postBodyP[i].textContent.includes('ISBN')) {
+			
+			var current = postBodyP[i].nextElementSibling;
+
+			while (current) {
+				if (current.tagName === 'P' && current.textContent.trim() === "") {
+					shoppingBtn = current;
+					break;
+				}
+				current = current.nextElementSibling;
+			}
+			
+			break;
+		}
+	}
+
+	if (shoppingBtn) {
+		shoppingBtn.classList.add('shoppingBtn');
+		var shoppingInfo = document.createElement('p');
+		shoppingBtn.insertAdjacentElement('afterend', shoppingInfo);
+		shoppingInfo.classList.add('shoppingInfo');
+		shoppingInfo.innerHTML = 'Sinopsis';
+	}
+
 })();
