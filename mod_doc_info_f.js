@@ -65,7 +65,7 @@
 			var current = postBodyP[i].nextElementSibling;
 
 			while (current) {
-				if (current.tagName === 'P' && current.textContent.trim() === "") {
+				if (current.textContent.trim() === "") {
 					shoppingBtn = current;
 					break;
 				}
