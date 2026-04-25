@@ -1,6 +1,6 @@
 <?php 
 $FILES = [
-	'mod/doc/info_f.js',
+	'mod/doc/info_g.js',
 	'mod/doc/load_a.js',
 	'mod/doc/modern-screenshot.min.js',
 	'mod/doc/qrcode.min.js',
