@@ -9,7 +9,6 @@ const formatRupiah = (angka) => {
 var shoppingData = localStorage.getItem('AQMLShoppingData');
 shoppingData = shoppingData ? JSON.parse(shoppingData) : [];
 var shoppingView = document.getElementById('modal-cart').querySelector('.modal-body');
-var shoppingBadge = document.getElementById('shopping-total-badge');
 
 (function () {
 
@@ -172,7 +171,7 @@ function fShoppingData() {
 			<div class="shopping-summary">
 				<div class="shopping-summary-row">
 					<span>Total Item</span>
-					<span id="shopping-total-item">0</span>
+					<span class="shopping-total-item">0</span>
 				</div>
 				<div class="shopping-summary-row">
 					<span>Total Harga</span>
@@ -226,8 +225,9 @@ function fShoppingDataTotal() {
 		x += shoppingData[i].qty;
 		y += shoppingData[i].qty * shoppingData[i].price;
 	}
-	shoppingBadge.innerHTML = x;
-	shoppingView.querySelector('#shopping-total-item').innerHTML = x;
+	document.querySelectorAll('.shopping-total-item').forEach(z => {
+		z.innerHTML = x;
+	});
 	shoppingView.querySelector('#shopping-total-price').innerHTML = formatRupiah(y);
 }
 
