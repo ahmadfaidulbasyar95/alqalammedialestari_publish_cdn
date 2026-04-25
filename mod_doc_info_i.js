@@ -188,6 +188,10 @@ function fShoppingData() {
 	}else{
 		html = '<span class="shoppingEmpty">Waduh, keranjangnya masih jomblo nih !<br>Kasihan dia sendirian, mending cari buku impianmu sekarang !<br>Sstt... buku-buku di daftar incaranmu lagi kangen pengen dipinang, lho.<br>Yuk, kasih mereka rumah baru di rak bukumu !</span>'
 		shoppingView.innerHTML = html;
+		document.querySelectorAll('.shopping-total-item').forEach(z => {
+			z.innerHTML = '0';
+			z.setAttribute('style', 'display: none;');
+		});
 	}
 }
 
@@ -227,6 +231,7 @@ function fShoppingDataTotal() {
 	}
 	document.querySelectorAll('.shopping-total-item').forEach(z => {
 		z.innerHTML = x;
+		z.removeAttribute('style');
 	});
 	shoppingView.querySelector('#shopping-total-price').innerHTML = formatRupiah(y);
 }
