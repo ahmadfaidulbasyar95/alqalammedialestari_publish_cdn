@@ -186,8 +186,7 @@ function fShoppingData() {
 				alert("Keranjang masih kosong!");
 				return;
 			}
-
-			localStorage.setItem('AQMLShoppingDataCO', '1');
+			copyTextToClipboard(JSON.stringify(shoppingData));
 			window.location.href = window.__shoppingData_url;
 		});
 		fShoppingDataTotal();
@@ -243,17 +242,3 @@ function fShoppingDataTotal() {
 }
 
 fShoppingData();
-
-window.addEventListener("message", function(event) {
-	if (event.origin !== window.__shoppingData_url.replace('/sale/checkout','')) return;
-	if (event.data === "minta_data_keranjang") {
-		var co = localStorage.getItem('AQMLShoppingDataCO');
-		if (co) {
-			var dt = localStorage.getItem('AQMLShoppingData');
-			localStorage.setItem('AQMLShoppingDataCO', '');
-			event.source.postMessage(dt, event.origin);
-		}else{
-			event.source.postMessage('', event.origin);
-		}
-	}
-}, false);
