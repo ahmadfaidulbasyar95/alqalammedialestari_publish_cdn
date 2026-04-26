@@ -187,18 +187,8 @@ function fShoppingData() {
 				return;
 			}
 
-			var form = document.createElement('form');
-			form.method = 'POST';
-			form.action = window.__shoppingData_url;
-
-			var input = document.createElement('input');
-			input.type = 'hidden';
-			input.name = 'cart_data';
-			input.value = JSON.stringify(shoppingData);
-
-			form.appendChild(input);
-			document.body.appendChild(form);
-			form.submit();
+			localStorage.setItem('AQMLShoppingDataCO', '1');
+			window.location.href = window.__shoppingData_url;
 		});
 		fShoppingDataTotal();
 	}else{
@@ -253,3 +243,17 @@ function fShoppingDataTotal() {
 }
 
 fShoppingData();
+
+window.addEventListener("message", function(event) {
+	if (event.origin !== window.__shoppingData_url.replace('/sale/checkout','')) return;
+	if (event.data === "minta_data_keranjang") {
+		var co = localStorage.getItem('AQMLShoppingDataCO');
+		if (co) {
+			var dt = localStorage.getItem('AQMLShoppingData');
+			localStorage.setItem('AQMLShoppingDataCO', '');
+			event.source.postMessage(dt, event.origin);
+		}else{
+			event.source.postMessage('', event.origin);
+		}
+	}
+}, false);
