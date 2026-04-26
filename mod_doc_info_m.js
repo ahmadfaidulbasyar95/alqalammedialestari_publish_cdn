@@ -71,7 +71,7 @@ var shoppingView = document.getElementById('modal-cart').querySelector('.modal-b
 	var postBodyP = postBody.querySelectorAll('p');
 	var shoppingBtn = null;
 	var shoppingPrd = {
-		title : document.querySelector('.post-title').textContent,
+		title : document.querySelector('.post-title').innerText,
 		price : 0,
 		qty : 0,
 		url : pageUrl,
