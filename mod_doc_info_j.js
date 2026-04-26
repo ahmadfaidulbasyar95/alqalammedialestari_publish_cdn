@@ -182,7 +182,23 @@ function fShoppingData() {
 		`;
 		shoppingView.innerHTML = html;
 		shoppingView.querySelector('#shopping-btn-checkout').addEventListener('click', function() {
-			alert('Sistem Dalam Pengerjaan !');
+			if (shoppingData.length === 0) {
+				alert("Keranjang masih kosong!");
+				return;
+			}
+
+			var form = document.createElement('form');
+			form.method = 'POST';
+			form.action = window.__shoppingData_url;
+
+			var input = document.createElement('input');
+			input.type = 'hidden';
+			input.name = 'cart_data';
+			input.value = JSON.stringify(shoppingData);
+
+			form.appendChild(input);
+			document.body.appendChild(form);
+			form.submit();
 		});
 		fShoppingDataTotal();
 	}else{
